@@ -1,0 +1,241 @@
+:root {
+  font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  color: #14324a;
+  background:
+    radial-gradient(circle at top right, rgba(255, 170, 120, 0.25), transparent 24%),
+    linear-gradient(180deg, #fff9f2 0%, #f5f7fb 100%);
+  --surface: rgba(255, 255, 255, 0.85);
+  --surface-strong: #ffffff;
+  --border: #d9e3ef;
+  --text-muted: #617388;
+  --accent: #df6c2e;
+  --accent-soft: #fff0e6;
+  --shadow: 0 20px 40px rgba(20, 50, 74, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+.app-shell {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 28px 0 40px;
+}
+
+.toolbar {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 18px;
+  padding: 28px;
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.toolbar h1 {
+  margin: 0 0 12px;
+  font-size: clamp(2rem, 4vw, 3.6rem);
+}
+
+.toolbar__description {
+  margin: 0;
+  max-width: 56ch;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.toolbar__controls {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  align-content: start;
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
+.field input,
+.field select {
+  min-height: 46px;
+  padding: 0 14px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface-strong);
+}
+
+.toolbar__count {
+  grid-column: span 2;
+  padding: 18px;
+  border-radius: 18px;
+  background: var(--accent-soft);
+  color: #8c481f;
+}
+
+.toolbar__count strong {
+  display: block;
+  font-size: 1.8rem;
+}
+
+.board-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.task-list {
+  display: grid;
+  gap: 14px;
+}
+
+.task-card,
+.detail-panel {
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: var(--surface-strong);
+  box-shadow: var(--shadow);
+}
+
+.task-card {
+  padding: 22px;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.task-card:hover,
+.task-card--active {
+  transform: translateY(-2px);
+  border-color: #f0b18b;
+}
+
+.task-card__top,
+.detail-panel__meta,
+.task-card__footer,
+.detail-panel__info {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+}
+
+.task-card h2,
+.detail-panel h2 {
+  margin: 16px 0 10px;
+  font-size: 1.32rem;
+}
+
+.task-card p,
+.detail-panel p {
+  margin: 0;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.task-card__footer {
+  margin-top: 18px;
+  color: var(--text-muted);
+}
+
+.detail-panel {
+  padding: 26px;
+  position: sticky;
+  top: 20px;
+  align-self: start;
+}
+
+.detail-panel--empty {
+  display: grid;
+  place-items: center;
+  min-height: 280px;
+  text-align: center;
+}
+
+.detail-panel__summary {
+  margin-bottom: 20px;
+}
+
+.detail-panel__info {
+  padding: 16px 0 22px;
+  border-bottom: 1px solid var(--border);
+}
+
+.detail-panel__content {
+  padding-top: 22px;
+}
+
+.detail-panel__content h3 {
+  margin: 0 0 12px;
+}
+
+.tag,
+.status-pill {
+  display: inline-flex;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.tag {
+  background: var(--accent-soft);
+  color: #9d5225;
+}
+
+.status-pill {
+  background: #eef6ff;
+  color: #2660a8;
+}
+
+.label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 920px) {
+  .toolbar,
+  .board-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .toolbar__controls {
+    grid-template-columns: 1fr;
+  }
+
+  .toolbar__count {
+    grid-column: span 1;
+  }
+
+  .detail-panel {
+    position: static;
+  }
+}
